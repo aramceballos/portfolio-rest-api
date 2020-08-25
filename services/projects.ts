@@ -15,14 +15,10 @@ class ProjectsService {
     return data;
   }
 
-  public getProject({ projectId }: { projectId: string }) {
-    const data = {
-      id: projectId,
-      title: 'Test',
-      description: 'Description test',
-    };
+  public async getProject({ projectId }: { projectId: string }) {
+    const data = await this.mongoDB.get(this.collection, projectId);
 
-    return Promise.resolve(data);
+    return data;
   }
 }
 

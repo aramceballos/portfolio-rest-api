@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { envConfig } from '../config';
 
 const USER = encodeURIComponent(envConfig.dbUser as string);
@@ -37,6 +37,12 @@ class MongoLib {
   public getAll(collection: string, query?: string) {
     return this.connect().then((db: any) => {
       return db.collection(collection).find(query).toArray();
+    });
+  }
+
+  public get(collection: string, id: string) {
+    return this.connect().then((db: any) => {
+      return db.collection(collection).findOne({ _id: new ObjectId(id) });
     });
   }
 }
