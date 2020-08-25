@@ -1,0 +1,39 @@
+{
+  "name": "portfolio-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "DEBUG=app:* nodemon index.ts",
+    "start": "NODE_ENV=production node build/index",
+    "build": "tsc --project ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armc7/portfolio-rest-api.git"
+  },
+  "keywords": [
+    "Express.js",
+    "TypeScript",
+    "API"
+  ],
+  "author": "Aram Ceballos <aramgonzalez12@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armc7/portfolio-rest-api/issues"
+  },
+  "homepage": "https://github.com/armc7/portfolio-rest-api#readme",
+  "devDependencies": {
+    "@types/express": "4.17.7",
+    "@types/mongodb": "3.5.26",
+    "@types/node": "14.6.0",
+    "nodemon": "2.0.4",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.2"
+  },
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "mongodb": "3.2.7"
+  }
+}
