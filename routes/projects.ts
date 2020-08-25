@@ -3,6 +3,7 @@ import ProjectsService from '../services/projects';
 
 const projectsApi = (app: express.Application) => {
   const router = express.Router();
+
   app.use('/api/projects', router);
 
   const projectsService = new ProjectsService();

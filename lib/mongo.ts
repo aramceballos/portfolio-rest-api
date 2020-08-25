@@ -45,6 +45,36 @@ class MongoLib {
       return db.collection(collection).findOne({ _id: new ObjectId(id) });
     });
   }
+
+  create(collection: string, data: any) {
+    return this.connect()
+      .then((db: any) => {
+        return db.collection(collection).insertOne(data);
+      })
+      .then((result: any) => result.insertedId);
+  }
+
+  update(collection: string, id: string, data: any) {
+    return this.connect()
+      .then((db: any) => {
+        return db
+          .collection(collection)
+          .updateOne(
+            { _id: new ObjectId(id) },
+            { $set: data },
+            { upsert: true },
+          );
+      })
+      .then((result: any) => result.upsertedId || id);
+  }
+
+  delete(collection: string, id: string) {
+    return this.connect()
+      .then((db: any) => {
+        return db.collection(collection).deleteOne({ _id: new ObjectId(id) });
+      })
+      .then(() => id);
+  }
 }
 
 export default MongoLib;
