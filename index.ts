@@ -1,4 +1,5 @@
 import express from 'express';
+import helmet from 'helmet';
 
 import { envConfig } from './config';
 import projectsApi from './routes/projects';
@@ -14,6 +15,7 @@ const app: express.Application = express();
 
 //Body Parser
 app.use(express.json());
+app.use(helmet());
 
 // Routes
 projectsApi(app);

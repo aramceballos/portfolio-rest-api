@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-rest-api",
+  "version": 2,
+  "builds": [{ "src": "index.ts", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.ts" }],
+  "env": {
+    "DB_USER": "@portfolio-db-user",
+    "DB_PASSWORD": "@portfolio-db-password",
+    "DB_NAME": "@portfolio-db-name",
+    "DB_HOST": "@portfolio-db-host"
+  }
+}

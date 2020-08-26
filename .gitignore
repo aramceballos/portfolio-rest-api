@@ -177,3 +177,4 @@ $RECYCLE.BIN/
 *.lnk
 
 build
+.vercel
