@@ -20,9 +20,9 @@ class ProjectsService {
   }
 
   public async getProjects(): Promise<TProject[]> {
-    const data = await this.mongoDB.getAll(this.collection);
+    const projects = await this.mongoDB.getAll(this.collection);
 
-    return data;
+    return projects;
   }
 
   public async getProject({
@@ -30,9 +30,9 @@ class ProjectsService {
   }: {
     projectId: string;
   }): Promise<TProject> {
-    const data = await this.mongoDB.get(this.collection, projectId);
+    const project = await this.mongoDB.get(this.collection, projectId);
 
-    return data;
+    return project;
   }
 }
 

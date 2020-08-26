@@ -10,10 +10,10 @@ const projectsApi = (app: express.Application) => {
 
   router.get('/', async (_req, res, next) => {
     try {
-      const data = await projectsService.getProjects();
+      const projects = await projectsService.getProjects();
 
       res.status(200).json({
-        data,
+        data: projects,
         message: 'projects listed',
       });
     } catch (error) {
@@ -25,10 +25,10 @@ const projectsApi = (app: express.Application) => {
     const { projectId } = req.params;
 
     try {
-      const data = await projectsService.getProject({ projectId });
+      const project = await projectsService.getProject({ projectId });
 
       res.status(200).json({
-        data,
+        data: project,
         message: 'project retrieved',
       });
     } catch (error) {
