@@ -29,6 +29,6 @@ app.use(errorHandler);
 
 app.listen(envConfig.port, () => {
   console.log(
-    `⚡️[server]: Server is running at https://localhost:${envConfig.port}`,
+    `⚡️[server]: Server is running at http://localhost:${envConfig.port}`,
   );
 });

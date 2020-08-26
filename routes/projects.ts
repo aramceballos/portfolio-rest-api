@@ -1,5 +1,10 @@
 import express from 'express';
 import ProjectsService from '../services/projects';
+import cacheResponse from '../utils/cacheResponse';
+import {
+  FIVE_MINUTES_IN_SECONDS,
+  SIXTY_MINUTES_IN_SECONDS,
+} from '../utils/time';
 
 const projectsApi = (app: express.Application) => {
   const router = express.Router();
@@ -9,6 +14,7 @@ const projectsApi = (app: express.Application) => {
   const projectsService = new ProjectsService();
 
   router.get('/', async (_req, res, next) => {
+    cacheResponse(res, SIXTY_MINUTES_IN_SECONDS);
     try {
       const projects = await projectsService.getProjects();
 
@@ -22,6 +28,7 @@ const projectsApi = (app: express.Application) => {
   });
 
   router.get('/:projectId', async (req, res, next) => {
+    cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
     const { projectId } = req.params;
 
     try {

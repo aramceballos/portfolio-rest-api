@@ -1,5 +1,10 @@
 import express from 'express';
 import CertificatesService from '../services/certificates';
+import cacheResponse from '../utils/cacheResponse';
+import {
+  FIVE_MINUTES_IN_SECONDS,
+  SIXTY_MINUTES_IN_SECONDS,
+} from '../utils/time';
 
 const certificatesApi = (app: express.Application) => {
   const router = express.Router();
@@ -9,6 +14,7 @@ const certificatesApi = (app: express.Application) => {
   const certificatesService = new CertificatesService();
 
   router.get('/', async (_req, res, next) => {
+    cacheResponse(res, SIXTY_MINUTES_IN_SECONDS);
     try {
       const certificates = await certificatesService.getCertificates();
 
@@ -22,6 +28,7 @@ const certificatesApi = (app: express.Application) => {
   });
 
   router.get('/:certificateId', async (req, res, next) => {
+    cacheResponse(res, FIVE_MINUTES_IN_SECONDS);
     const { certificateId } = req.params;
 
     try {
